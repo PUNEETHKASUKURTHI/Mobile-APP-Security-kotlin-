@@ -1,0 +1,13 @@
+Sliding into the fun useCard in CardInterface.kt, you can see that the card number (ID) and authentication token need to work.UseCard.kt only accepts  card information without verifying that the card belongs to the person using the authentication token. If the provided card ID and token exist in the database, the system will use that card. The client.useCard () function accepts a card ID and token as described in CardInterface.kt.I tried to use user2's gift card while using testuser1234's authentication token using the following curl script.
+
+curl -H "Authorization: Token ae76hbced674326d9b68e693c4ebcae4c8" http://appsec.moyix.net/api/cards
+
+curl -H 'Authorization: Token (token of user1)' -X PUT https://appsecclass.report/api/use/(giftcard id owned by testuser1234)
+
+And this works because the testuser1234 token for user exists and the gift card ID provided is a legitimate ID even if it does not belong to the same user. The application does not verify that a particular gift card ID belongs to the same user as the token, so an attacker who has access to gift card data and a valid gift card ID can use any gift card owned by any user and we can use it.
+
+
+
+Fix:
+By invoking the getCards() method from CardInterface.kt in UseCard.kt, we can get a list of giftcards held by the user whose authentication token is supplied.
+If the specified giftcard id is found in the user's list of giftcards, utilize the card; otherwise it will throw an exception.

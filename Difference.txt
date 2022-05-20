@@ -1,0 +1,19 @@
+1:
+There are 2 types of intents 
+Implicit Intent -- doesnt specifies the components.
+Explicit Intent -- specifies the components.
+
+2:
+Explicit intent is more secure as we need to specify which component is needed to to act on th e recommended action so it is usefull and secure in these situations where as an implicit describes only the data type and any parameter or process in the system which has all these requirements can execute the actiity in implicit intent making it prone to vulnerabilities.
+3:
+It is Implicit intent in the given lines of 69 to 73 of SecondFragment.kt
+
+4:
+In the 68 to 70 rd line of ThirdFragment.kt the intent used is Explicit intent.
+
+5:
+Explicit intent is the correct one while considering our requirements and project.
+
+  
+
+As for the final part in SecondFragment Implicent Intent functioSecondFragment Since the specified data type is a URL, the implicit goal is to use the registered user data as the logged-in user to display the gift card browsing data and open a browser window. Instead of browsing the browser window, you can use an explicit intent to redirect to the ProductScrollingActivity component. As we know these intents are the main process that allow applications to perform certian activites and removing these  in certain ways such that applications runs properly.
